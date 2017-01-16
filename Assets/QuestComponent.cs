@@ -14,13 +14,32 @@ public class QuestComponent : MonoBehaviour {
     [SerializeField]
     private QuestEndPoint _endPoint;
 
-	// Use this for initialization
-	void Start () {
+    public string Description;
+
+    public string progres;
+
+    public int nodeCounter;
+    
+
+	void Awake ()
+    {
+        progres = "finished step " + nodeCounter + " out of " + _questNodes.Length;
+        foreach(QuestNode Q in _questNodes)
+        {
+            Q.NodeClosed += OnNodeClose;
+        }
+    }
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    void OnNodeClose()
+    {
+
+    }
+
+
+	public string GetProgress()
+    {
+        progres = "finished step " + nodeCounter + " out of " + _questNodes.Length;
+        return (progres);
+    }
 }

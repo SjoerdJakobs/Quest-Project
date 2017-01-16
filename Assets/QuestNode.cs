@@ -3,6 +3,8 @@ using System.Collections;
 
 public class QuestNode : MonoBehaviour {
 
+    public event System.Action NodeClosed;
+
     private bool _active;
     public bool Active
     {
