@@ -33,9 +33,18 @@ public class QuestComponent : MonoBehaviour {
 
     void OnNodeClose()
     {
-
+        QuestNode Q = _questNodes[nodeCounter];
+        if(Q.Completed == true)
+        {
+            nodeCounter++;
+            _questNodes[nodeCounter].ActivateNode();
+        }   
     }
 
+    private void CheckCurrentNode()
+    {
+
+    }
 
 	public string GetProgress()
     {

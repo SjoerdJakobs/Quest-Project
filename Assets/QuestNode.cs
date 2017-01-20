@@ -11,25 +11,16 @@ public class QuestNode : MonoBehaviour {
         get { return _active; }
         set { _active = value; }
     }
-
-    private bool _completed;
-    public bool Completed
-    {
-        get { return _completed; }
-        set { _completed = value; }
-    }
+    
+    public bool Completed { get; set; }
 
     private bool _timer;
-    public bool Timer
-    {
-        get { return _timer; }
-        set { _timer = value; }
-    }
+    public bool Timer { get; set; }
 
-	// Use this for initialization
-	void Start () {
-	
-	}
+	public void ActivateNode(float timer = 0)
+    {
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
