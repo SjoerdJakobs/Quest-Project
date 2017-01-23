@@ -8,12 +8,6 @@ public class QuestComponent : MonoBehaviour {
     [SerializeField]
     private QuestNode[] _questNodes;
 
-    [SerializeField]
-    private QuestStartPoint _startPoint;
-
-    [SerializeField]
-    private QuestEndPoint _endPoint;
-
     public string Description;
 
     public string progres;
@@ -31,7 +25,7 @@ public class QuestComponent : MonoBehaviour {
     }
 	
 
-    void OnNodeClose()
+    private void OnNodeClose()
     {
         QuestNode Q = _questNodes[nodeCounter];
         if(Q.Completed == true)

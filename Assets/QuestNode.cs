@@ -5,25 +5,44 @@ public class QuestNode : MonoBehaviour {
 
     public event System.Action NodeClosed;
 
-    private bool _active;
-    public bool Active
-    {
-        get { return _active; }
-        set { _active = value; }
-    }
-    
+    public bool Active { get; set; }
+
     public bool Completed { get; set; }
 
-    private bool _timer;
     public bool Timer { get; set; }
 
-	public void ActivateNode(float timer = 0)
-    {
+    public string Description { get; set; }
 
+    public float TotalTime { get; set; }
+
+    public float LeftTime { get; set; }
+
+    public void ActivateNode(float timer = 0)
+    {
+        if (timer != 0)
+        {
+            TotalTime = timer;
+            LeftTime = timer;
+            StartCoroutine(TimerCoroutine(timer));
+            Invoke("DeactivateNode", timer);
+        }
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
+    IEnumerator TimerCoroutine(float time)
+    {
+        while (true)
+        {
+            LeftTime --;
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    public void DeactivateNode()
+    {
+        StopAllCoroutines();
+        if (NodeClosed != null)
+        {
+            NodeClosed();
+        }
+    }
 }
